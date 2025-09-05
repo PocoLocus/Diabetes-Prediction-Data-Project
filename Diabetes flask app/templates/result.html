@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Result{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-4">
+        <div class="card shadow-lg p-4 rounded-4" style="max-width: 450px; width: 100%;">
+            <h2>Result</h2>
+            <p>
+                You have a <b>{{ proba }}%</b>
+                {% if proba <= 33 %}
+                    (low risk)
+                {% elif proba <= 66 %}
+                    (medium risk)
+                {% else %}
+                    (high risk)
+                {% endif %}
+                probability of being diabetes-positive.
+            </p>
+            <a href="{{ url_for('home') }}">Got back to the submission form.</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Diabetes prediction{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-4">
+        <div class="card shadow-lg p-4 rounded-4" style="max-width: 500px; width: 100%;">
+            <form method="POST" action="{{ url_for('home') }}">
+                {{ form.csrf_token }}
+                <h2>Diabetes prediction form</h2>
+                <p>Please fill in the cells with your data:</p>
+                <div class="mb-3">
+                    {{ form.gender.label(class="form_label") }}
+                    {{ form.gender(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.age.label(class="form_label") }}
+                    {{ form.age(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.hypertension.label(class="form_label") }}
+                    {{ form.hypertension(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.heart_disease.label(class="form_label") }}
+                    {{ form.heart_disease(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.smoking_history.label(class="form_label") }}
+                    {{ form.smoking_history(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.bmi.label(class="form_label") }}
+                    {{ form.bmi(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.HbA1c_level.label(class="form_label") }}
+                    {{ form.HbA1c_level(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.blood_glucose_level.label(class="form_label") }}
+                    {{ form.blood_glucose_level(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.submit(class="btn btn-success") }}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
