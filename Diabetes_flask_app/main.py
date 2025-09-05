@@ -57,11 +57,12 @@ def transform_and_calculate(patient):
                            patient["gender_Male"], patient["gender_Other"],
                            patient["smoking_history_never"], patient["smoking_history_past"], patient["smoking_history_unknown"]]])
     # Scale data
-    loaded_scaler = joblib.load("../scaler.pkl")
+    scaler_path = os.path.join(BASE_DIR, "..", "scaler.pkl")
+    scaler_path = os.path.abspath(scaler_path)
+    loaded_scaler = joblib.load(scaler_path)
     num_features_idx = [0, 3, 4, 5]
     X_patient[:, num_features_idx] = loaded_scaler.transform(X_patient[:, num_features_idx])
     # Calculate the result
-    prediction = loaded_model.predict(X_patient)
     proba = loaded_model.predict_proba(X_patient)
     return proba[0][1]
 
