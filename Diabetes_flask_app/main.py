@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import joblib
 import sklearn
+import os
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "dgrgvcebwcsdnav"
@@ -23,7 +24,10 @@ class DiabetesForm(FlaskForm):
     submit = SubmitField('Submit')
 
 # Load the Machine Learning model
-loaded_model = joblib.load("../random_forest_model.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+rf_model_path = os.path.join(BASE_DIR, "..", "random_forest_model.pkl")
+rf_model_path = os.path.abspath(rf_model_path)
+loaded_model = joblib.load(rf_model_path)
 
 def transform_and_calculate(patient):
     # Encoding gender
